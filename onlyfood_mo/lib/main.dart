@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
+import 'package:onlyfood_mo/responsive/responsive_layout_screen.dart';
+import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 
 void main() {
@@ -17,6 +20,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: const Text("Only food"));
+        home: const ResponsiveLayoutScreen(
+          mobileScreenLayout: MobileScreenLayout(),
+          webScreenLayout: WebScreenLayout(),
+        ));
   }
 }
