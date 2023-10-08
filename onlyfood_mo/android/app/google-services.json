@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60089411770",
+    "project_id": "only-food-ce886",
+    "storage_bucket": "only-food-ce886.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60089411770:android:aa28e124d5658d87777a83",
+        "android_client_info": {
+          "package_name": "com.example.onlyfood_mo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR4KBzboKiTotyiqivoUIxSCaO1mwGvNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
