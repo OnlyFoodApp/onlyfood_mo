@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
 import 'package:onlyfood_mo/responsive/responsive_layout_screen.dart';
 import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
+import 'package:onlyfood_mo/screens/login_screen.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 
 void main() async {
@@ -18,7 +19,7 @@ void main() async {
             storageBucket:
                 'only-food-ce886.appspot.com')); //khởi tạo Firebase trong ứng dụng
   } else {
-    await Firebase.initializeApp(); //khởi tạo Firebase trong ứng dụng
+    // await Firebase.initializeApp(); //khởi tạo Firebase trong ứng dụng
   }
   runApp(const MyApp());
 }
@@ -35,9 +36,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: const ResponsiveLayoutScreen(
-          mobileScreenLayout: MobileScreenLayout(),
-          webScreenLayout: WebScreenLayout(),
-        ));
+        home: const LoginScreen());
   }
 }
