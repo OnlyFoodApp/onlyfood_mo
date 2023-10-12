@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
 import 'package:onlyfood_mo/responsive/responsive_layout_screen.dart';
 import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
-import 'package:onlyfood_mo/screens/login_screen.dart';
+import 'package:onlyfood_mo/screens/login/login_screen.dart';
+import 'package:onlyfood_mo/screens/signup/signup_screen.dart';
+import 'package:onlyfood_mo/screens/signup/signup_screen_fourth.dart';
+import 'package:onlyfood_mo/screens/signup/signup_screen_second.dart';
+import 'package:onlyfood_mo/screens/signup/signup_screen_third.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 
 void main() async {
@@ -36,6 +40,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: const LoginScreen());
+        home: const SignUpScreenFourth());
   }
 }

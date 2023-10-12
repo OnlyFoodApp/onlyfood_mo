@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // con cụ thể. (no la flex day)
               //logo image
               Image.asset(
-                "assets/logo_only_food.jpg",
+                "assets/logo_only_food.png",
                 width: 100,
                 height: 100,
                 fit: BoxFit.cover,
@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
-                      fontSize: 40),
+                      fontSize: 30),
                 ),
               ),
               const SizedBox(height: 40),
