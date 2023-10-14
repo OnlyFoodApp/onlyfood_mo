@@ -25,16 +25,17 @@ class TextFieldInput extends StatelessWidget {
     return TextField(
       controller: textEditingController,
       decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: const TextStyle(color: hintTextColor),
-          border: inputBorder,
-          focusedBorder:
-              inputBorder, // khi mà click vào input đường viền inputBorder hiện lên
-          enabledBorder:
-              inputBorder, // điền rồi thì cái inputBorder vẫn hiển thị
-          filled: true,
-          contentPadding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
-          fillColor: fillInputcolor),
+        hintText: hintText,
+        hintStyle: const TextStyle(color: hintTextColor),
+        border: inputBorder,
+        focusedBorder:
+            inputBorder, // khi mà click vào input đường viền inputBorder hiện lên
+        enabledBorder: inputBorder, // điền rồi thì cái inputBorder vẫn hiển thị
+        filled: true,
+        contentPadding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+        fillColor: fillInputcolor,
+      ),
+      style: const TextStyle(color: Colors.black),
       keyboardType: textInputType,
       obscureText: isPass, // ẩn đi **** như password
     );

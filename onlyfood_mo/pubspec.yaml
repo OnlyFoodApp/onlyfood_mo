@@ -37,6 +37,7 @@ dependencies:
     sdk: flutter
   flutter_img: ^0.1.5+111
   flutter_svg: ^2.0.7
+  image_picker: ^1.0.4
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -53,7 +54,10 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/logo_only_food.jpg
+    - assets/logo_only_food.png
+    - assets/facebook_icon.png
+    - assets/verification_code.svg
+    - assets/default_avatar.svg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
