@@ -5,6 +5,7 @@ import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
 import 'package:onlyfood_mo/responsive/responsive_layout_screen.dart';
 import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
 import 'package:onlyfood_mo/screens/login/login_screen.dart';
+import 'package:onlyfood_mo/screens/profile_editing/profile_editing.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password_verify.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_pasword_second.dart';
@@ -43,6 +44,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: const ResetPasswordSecond());
+        home: const ProfileEditing());
   }
 }
