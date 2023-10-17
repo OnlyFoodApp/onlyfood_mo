@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onlyfood_mo/utils/demensions.dart';
+import 'package:onlyfood_mo/utils/global_variable.dart';
 
 class ResponsiveLayoutScreen extends StatelessWidget {
   final Widget webScreenLayout;
