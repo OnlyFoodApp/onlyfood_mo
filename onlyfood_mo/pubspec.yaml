@@ -59,6 +59,36 @@ flutter:
     - assets/verification_code.svg
     - assets/default_avatar.svg
     - assets/icon_lock.svg
+    - assets/icon_message_messenger.svg
+    - assets/icon_user_follow_add.svg
+    - assets/images/1.png
+    - assets/images/2.png
+    - assets/images/3.png
+    - assets/images/4.png
+    - assets/images/5.png
+    - assets/images/6.png
+    - assets/images/7.png
+    - assets/images/8.png
+    - assets/images/9.png
+    - assets/images/10.png
+    - assets/images/11.png
+    - assets/images/12.png
+    - assets/images/13.png
+    - assets/images/14.png
+    - assets/images/1.png
+    - assets/images/2.png
+    - assets/images/3.png
+    - assets/images/4.png
+    - assets/images/5.png
+    - assets/images/6.png
+    - assets/images/7.png
+    - assets/images/8.png
+    - assets/images/9.png
+    - assets/images/10.png
+    - assets/images/11.png
+    - assets/images/12.png
+    - assets/images/13.png
+    - assets/images/14.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

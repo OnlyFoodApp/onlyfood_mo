@@ -13,6 +13,8 @@ import 'package:onlyfood_mo/screens/signup/signup_screen.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen_fourth.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen_second.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen_third.dart';
+import 'package:onlyfood_mo/screens/view_profile/view_profile_main.dart';
+import 'package:onlyfood_mo/screens/view_profile/profile.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 
 void main() async {
@@ -44,6 +46,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: const ProfileEditing());
+        home: const ViewProfileMain());
   }
 }
