@@ -108,7 +108,7 @@ class _ProfileEditingState extends State<ProfileEditing> {
                 radius: 50,
                 backgroundColor: Colors.grey[300], // Màu nền cho CircleAvatar
                 child: Stack(
-                  alignment: Alignment.bottomRight,
+                  
                   children: [
                     SvgPicture.asset(
                       "assets/default_avatar.svg",
