@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
 import 'package:onlyfood_mo/responsive/responsive_layout_screen.dart';
 import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
+import 'package:onlyfood_mo/screens/home_dashboard-chef/home_dashboad_chef.dart';
 import 'package:onlyfood_mo/screens/login/login_screen.dart';
 import 'package:onlyfood_mo/screens/profile_editing/profile_editing.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password.dart';
@@ -47,6 +48,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: const ViewCampaignDetailChef());
+        home: const HomeDashboadChef());
   }
 }
