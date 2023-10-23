@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
-class ChampaignScreen extends StatefulWidget {
-  const ChampaignScreen({Key? key}) : super(key: key);
+class AddNewCampaign extends StatefulWidget {
+  const AddNewCampaign({Key? key}) : super(key: key);
   @override
-  createState() => _ChampaignState();
+  createState() => _CampaignState();
 }
 
-class _ChampaignState extends State<ChampaignScreen> {
+class _CampaignState extends State<AddNewCampaign> {
   @override
   void dispose() {
     // TODO: implement dispose
@@ -17,7 +17,6 @@ class _ChampaignState extends State<ChampaignScreen> {
 
   TextEditingController dateStartInputController = TextEditingController();
   TextEditingController dateEndInputController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class _ChampaignState extends State<ChampaignScreen> {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Create champaign'),
+        title: const Text('Create Campaign'),
       ),
       body: SafeArea(
         child: Container(
@@ -333,16 +332,18 @@ class _ChampaignState extends State<ChampaignScreen> {
               TextButton(
                 style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all(const Size(400, 50)),
-                  shape: MaterialStateProperty.all(ContinuousRectangleBorder(borderRadius: BorderRadius.circular(19))),
+                  shape: MaterialStateProperty.all(ContinuousRectangleBorder(
+                      borderRadius: BorderRadius.circular(19))),
                   backgroundColor:
                       MaterialStateProperty.all<Color>(const Color(0xFF555555)),
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.white),
                 ),
                 onPressed: () {},
-                child: const Text('Save', style: TextStyle(
-                  fontSize: 16
-                ),),
+                child: const Text(
+                  'Save',
+                  style: TextStyle(fontSize: 16),
+                ),
               )
             ],
           ),
