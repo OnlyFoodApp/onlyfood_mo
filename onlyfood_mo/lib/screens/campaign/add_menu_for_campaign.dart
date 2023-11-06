@@ -63,11 +63,12 @@ class _AddMenuForCampaign extends State<AddMenuForCampaign> {
                 ),
               ),
               const SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    // flex: 1,
-                    child: Container(
+              Container(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
                       height: 58,
                       padding: const EdgeInsetsDirectional.all(16.0),
                       child: const Row(
@@ -84,11 +85,7 @@ class _AddMenuForCampaign extends State<AddMenuForCampaign> {
                         ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    // flex: 1,
-                    // fit: FlexFit.loose,
-                    child: Container(
+                    Container(
                       height: 58,
                       padding: const EdgeInsetsDirectional.all(16.0),
                       child: const Row(
@@ -105,8 +102,8 @@ class _AddMenuForCampaign extends State<AddMenuForCampaign> {
                         ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(height: 60),
               Container(
