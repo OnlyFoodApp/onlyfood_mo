@@ -12,16 +12,24 @@ class _CommentScreenState extends State<CommentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Comment"),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            // Thực hiện các hành động khi nhấn nút back
+            Navigator.of(context).pop();
+          },
         ),
-        body: SafeArea(
-            child: ListView(
+        title: const Text('Comments', style: TextStyle(color: Colors.black)),
+      ),
+      body: SafeArea(
+        child: ListView(
           padding: const EdgeInsets.all(8),
           children: <Widget>[
             Container(
               height: 50,
-              color: Colors.amber[600],
               margin: EdgeInsets.only(top: 10, bottom: 10),
               child: Row(
                 children: [
@@ -90,17 +98,9 @@ class _CommentScreenState extends State<CommentScreen> {
                 ],
               ),
             ),
-            Container(
-              height: 50,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
-            ),
-            Container(
-              height: 50,
-              color: Colors.amber[100],
-              child: const Center(child: Text('Entry C')),
-            ),
           ],
-        )));
+        ),
+      ),
+    );
   }
 }
