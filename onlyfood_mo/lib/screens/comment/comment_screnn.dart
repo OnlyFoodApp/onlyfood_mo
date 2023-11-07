@@ -13,7 +13,13 @@ class _CommentScreenState extends State<CommentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Comment"),
+          title: const Text(
+            'Comments',
+            style: TextStyle(color: Colors.black),
+          ), // Tiêu đề
+          backgroundColor: Colors.white,
+          iconTheme: const IconThemeData(color: Colors.black),
+          elevation: 0,
         ),
         body: SafeArea(
             child: ListView(
@@ -44,7 +50,7 @@ class _CommentScreenState extends State<CommentScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
+                          const Row(
                             children: [
                               Text("Phat ",
                                   textAlign: TextAlign.left,
