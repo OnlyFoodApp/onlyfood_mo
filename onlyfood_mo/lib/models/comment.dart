@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 class Comment {
   late String id;
-  late String accountId;
+  late String username;
   late String postId;
   late String text;
   late int displayIndex;
@@ -12,7 +10,7 @@ class Comment {
 
   Comment({
     required this.id,
-    required this.accountId,
+    required this.username,
     required this.postId,
     required this.text,
     required this.displayIndex,
@@ -24,7 +22,7 @@ class Comment {
   factory Comment.fromJson(Map<String, dynamic> json) {
     return Comment(
       id: json['id'] as String? ?? '',
-      accountId: json['accountId'] as String? ?? '',
+      username: json['username'] as String? ?? '',
       postId: json['postId'] as String? ?? '',
       text: json['text'] as String? ?? '',
       displayIndex: json['displayIndex'] as int? ?? 0,
