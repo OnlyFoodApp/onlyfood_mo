@@ -1,5 +1,37 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
+import 'package:onlyfood_mo/models/comment.dart';
+
+/////////////////////////////////////////////
+///call api post////////////////////
+Future<List<Comment>> fetchComment() async {
+  late String id = '';
+  final response = await http.get(
+    Uri.parse('https://onlyfoods.azurewebsites.net/api/v1/comments/' + id),
+  );
+
+  if (response.statusCode == 200) {
+    final Map<String, dynamic> jsonData = json.decode(response.body);
+    final List<dynamic> data = jsonData['data'];
+
+    if (data is List) {
+      int dataLength = data.length;
+      List<Comment> comments =
+          data.map((data) => Comment.fromJson(data)).toList();
+      print("data: " + comments.length.toString());
+      return comments;
+    } else {
+      throw Exception('Data is not in the expected format');
+    }
+  } else {
+    throw Exception('Failed to load post');
+  }
+}
+
+///////////////////////////
 
 class CommentScreen extends StatefulWidget {
   const CommentScreen({super.key});
@@ -9,6 +41,14 @@ class CommentScreen extends StatefulWidget {
 }
 
 class _CommentScreenState extends State<CommentScreen> {
+  late Future<List<Comment>> listComment;
+
+  @override
+  void initState() {
+    super.initState();
+    listComment = fetchComment();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
