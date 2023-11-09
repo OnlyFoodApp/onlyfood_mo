@@ -6,7 +6,9 @@ import 'package:onlyfood_mo/responsive/responsive_layout_screen.dart';
 import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
 import 'package:onlyfood_mo/screens/campaign/add_new_campaign.dart';
 import 'package:onlyfood_mo/screens/campaign/add_menu_for_campaign.dart';
+import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
 import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
+import 'package:onlyfood_mo/screens/create_post/create_post_screen.dart';
 
 import 'package:onlyfood_mo/screens/login/login_screen.dart';
 
@@ -18,6 +20,7 @@ import 'package:onlyfood_mo/screens/profile_editing/profile_editing.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password_verify.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_pasword_second.dart';
+import 'package:onlyfood_mo/screens/search/search_screen.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen_fourth.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen_second.dart';
@@ -56,6 +59,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: const NewfeedScreen());
+        home: NewfeedScreen());
   }
 }
