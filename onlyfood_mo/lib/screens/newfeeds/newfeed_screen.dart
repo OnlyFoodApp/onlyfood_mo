@@ -231,7 +231,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                     //Image post
 
                     Image.network(
-                      postImage[index % postImage.length],
+                      snapshot.data![index].mediaURLs,
                       width: double.infinity,
                       height: 400,
                       fit: BoxFit.cover,
