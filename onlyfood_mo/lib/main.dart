@@ -6,6 +6,7 @@ import 'package:onlyfood_mo/responsive/responsive_layout_screen.dart';
 import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
 import 'package:onlyfood_mo/screens/campaign/add_new_campaign.dart';
 import 'package:onlyfood_mo/screens/campaign/add_menu_for_campaign.dart';
+import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
 import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
 import 'package:onlyfood_mo/screens/create_post/create_post_screen.dart';
 
@@ -58,6 +59,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: SearchScreen());
+        home: NewfeedScreen());
   }
 }
