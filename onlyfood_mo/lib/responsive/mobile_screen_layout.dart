@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:onlyfood_mo/screens/create_post/create_post_screen.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 import 'package:onlyfood_mo/utils/global_variable.dart';
 
@@ -13,6 +14,47 @@ class MobileScreenLayout extends StatefulWidget {
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   int _page = 0;
   late PageController pageController; // for tabs animation
+
+  void _showAddOptions(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: const Icon(Icons.post_add),
+              title: const Text('Create Post'),
+              onTap: () {
+                // Xử lý khi người dùng chọn "Create Post"
+                print("Chuyển page");
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CreatePostScreen(
+                      onPostSuccess: () {
+                        // Handle navigation or any other action after post success
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.post_add),
+              title: const Text('Create Campaign'),
+              onTap: () {
+                // Xử lý khi người dùng chọn "Create Campaign"
+                Navigator.pop(context); // Đóng popup
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -85,13 +127,16 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
         ],
         onTap: (index) {
-          // Đổi trang khi người dùng click vào biểu tượng
-          pageController.jumpToPage(index);
-
-          // Cập nhật trang thái của _page
-          setState(() {
-            _page = index;
-          });
+          if (index == 2) {
+            _showAddOptions(
+                context); // Show the popup when the "Add" tab is tapped.
+          } else {
+            // Handle other tab selections
+            pageController.jumpToPage(index);
+            setState(() {
+              _page = index;
+            });
+          }
         },
         currentIndex: _page,
       ),
