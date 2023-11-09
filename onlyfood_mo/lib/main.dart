@@ -20,6 +20,7 @@ import 'package:onlyfood_mo/screens/profile_editing/profile_editing.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password_verify.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_pasword_second.dart';
+import 'package:onlyfood_mo/screens/search/search_screen.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen_fourth.dart';
 import 'package:onlyfood_mo/screens/signup/signup_screen_second.dart';
@@ -58,6 +59,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: LoginScreen());
+        home: SearchScreen());
   }
 }
