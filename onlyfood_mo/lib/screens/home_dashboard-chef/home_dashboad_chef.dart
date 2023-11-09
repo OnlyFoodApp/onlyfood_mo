@@ -22,7 +22,13 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
         length: 2,
         child: Scaffold(
             appBar: AppBar(
-              leading: const BackButton(),
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
+                onPressed: () {
+                  // Thực hiện các hành động khi nhấn nút back
+                  Navigator.of(context).pop();
+                },
+              ),
               title: const Text(
                 'Chef Store',
                 style: TextStyle(color: Colors.black),

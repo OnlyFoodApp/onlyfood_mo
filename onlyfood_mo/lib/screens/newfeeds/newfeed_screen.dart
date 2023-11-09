@@ -9,6 +9,7 @@ import 'package:onlyfood_mo/models/post.dart';
 import 'package:http/http.dart' as http;
 import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
 import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
+import 'package:onlyfood_mo/screens/home_dashboard-chef/home_dashboad_chef.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -86,6 +87,19 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
           ],
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.storefront, color: Colors.black),
+            onPressed: () {
+              // Thực hiện các hành động khi nhấn nút menu
+              // Hiển thị menu hoặc thực hiện các hành động tùy thuộc vào ý muốn của bạn
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => (HomeDashboadChef()),
+                ),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black),
             onPressed: () {
