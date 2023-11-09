@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onlyfood_mo/screens/view_campaign_detail-chef/view_campaign_detail_chef.dart';
 
 class HomeDashboadChef extends StatefulWidget {
   const HomeDashboadChef({Key? key}) : super(key: key);
@@ -22,7 +23,13 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
         length: 2,
         child: Scaffold(
             appBar: AppBar(
-              leading: const BackButton(),
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
+                onPressed: () {
+                  // Thực hiện các hành động khi nhấn nút back
+                  Navigator.of(context).pop();
+                },
+              ),
               title: const Text(
                 'Chef Store',
                 style: TextStyle(color: Colors.black),
@@ -136,7 +143,7 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
                                   ),
                                 ],
                               ),
-                              child: const Column(
+                              child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -187,7 +194,15 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
                                         child: Text('Cancel'),
                                       ),
                                       ElevatedButton(
-                                        onPressed: null,
+                                        onPressed: () => {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ViewCampaignDetailChef(),
+                                            ),
+                                          )
+                                        },
                                         child: Text('Details'),
                                       ),
                                     ],

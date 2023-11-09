@@ -17,6 +17,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            // Thực hiện các hành động khi nhấn nút back
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
       body: SafeArea(
         child: Container(
           width: double.infinity, // vô cùng
