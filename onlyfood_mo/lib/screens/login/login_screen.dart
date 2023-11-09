@@ -27,7 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     try {
       //call api to get token
-      String urlString = 'https://onlyfoods.azurewebsites.net/api/token';
+      String urlString =
+          'https://onlyfoods.azurewebsites.net/api/v1/auth/login';
       Uri url = Uri.parse(urlString);
       Map<String, String> headers = {"Content-type": "application/json"};
       //get email and password from inputfieldtext
@@ -57,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
         String token = apiResponse.body;
         Map<String, dynamic> user = JwtDecoder.decode(token);
         await prefs.setString('jwt', token); // SAVE JWT
-
+        await prefs.setString('accountId', user["Id"]);
         print("Token when we get inside pref: " +
             prefs.getString("jwt").toString());
 
