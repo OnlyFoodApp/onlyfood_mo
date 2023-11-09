@@ -78,7 +78,7 @@ class _ViewMyCartState extends State<ViewMyCart> {
                           children: [
                             Icon(
                               Icons.remove_circle_outline,
-                              color: Color.fromRGBO(196, 20, 23, 1),
+                              color: Colors.black,
                             ),
                             SizedBox(
                               width: 10,
@@ -94,7 +94,7 @@ class _ViewMyCartState extends State<ViewMyCart> {
                             ),
                             Icon(
                               Icons.add_circle,
-                              color: Color.fromRGBO(196, 20, 23, 1),
+                              color: Colors.black,
                             ),
                           ],
                         ),
@@ -161,7 +161,7 @@ class _ViewMyCartState extends State<ViewMyCart> {
                           children: [
                             Icon(
                               Icons.remove_circle_outline,
-                              color: Color.fromRGBO(196, 20, 23, 1),
+                              color: Colors.black,
                             ),
                             SizedBox(
                               width: 10,
@@ -177,7 +177,7 @@ class _ViewMyCartState extends State<ViewMyCart> {
                             ),
                             Icon(
                               Icons.add_circle,
-                              color: Color.fromRGBO(196, 20, 23, 1),
+                              color: Colors.black,
                             ),
                           ],
                         ),
@@ -283,8 +283,7 @@ class _ViewMyCartState extends State<ViewMyCart> {
             padding:
                 const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40.0),
-                color: const Color.fromRGBO(196, 20, 23, 1)),
+                borderRadius: BorderRadius.circular(40.0), color: Colors.black),
             child: TextButton(
               onPressed: () {},
               child: const Text(

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
+import 'package:onlyfood_mo/screens/signup/signup_screen.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 import 'package:onlyfood_mo/widgets/text_field_input.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -223,7 +224,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpScreen(),
+                            ),
+                          );
+                        },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             vertical: 8,
