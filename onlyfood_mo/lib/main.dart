@@ -7,9 +7,14 @@ import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
 import 'package:onlyfood_mo/screens/campaign/add_new_campaign.dart';
 import 'package:onlyfood_mo/screens/campaign/add_menu_for_campaign.dart';
 import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
-import 'package:onlyfood_mo/screens/comment/comment_screnn.dart';
+import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
+
 import 'package:onlyfood_mo/screens/login/login_screen.dart';
+
+import 'package:onlyfood_mo/screens/newfeeds/newfeed_screen.dart';
+
 import 'package:onlyfood_mo/screens/post/view_post_detail.dart';
+
 import 'package:onlyfood_mo/screens/profile_editing/profile_editing.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password.dart';
 import 'package:onlyfood_mo/screens/reset_password/reset_password_verify.dart';

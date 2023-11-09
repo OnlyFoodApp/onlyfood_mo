@@ -7,6 +7,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 import 'package:onlyfood_mo/widgets/text_field_input.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -51,8 +52,15 @@ class _LoginScreenState extends State<LoginScreen> {
       //end call api and return status code
       int statusCode = apiResponse.statusCode;
       if (statusCode == 200) {
+        SharedPreferences prefs =
+            await SharedPreferences.getInstance(); // SAVE JWT
         String token = apiResponse.body;
         Map<String, dynamic> user = JwtDecoder.decode(token);
+        await prefs.setString('jwt', token); // SAVE JWT
+
+        print("Token when we get inside pref: " +
+            prefs.getString("jwt").toString());
+
         String role = user["Role"];
         Navigator.pushReplacement(
           // Push a new route and remove the current screen from the stack
