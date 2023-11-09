@@ -13,6 +13,7 @@ import 'package:onlyfood_mo/screens/create_post/create_post_screen.dart';
 import 'package:onlyfood_mo/screens/login/login_screen.dart';
 
 import 'package:onlyfood_mo/screens/newfeeds/newfeed_screen.dart';
+import 'package:onlyfood_mo/screens/notificate/notificate_screen.dart';
 
 import 'package:onlyfood_mo/screens/post/view_post_detail.dart';
 
@@ -59,6 +60,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: LoginScreen());
+        home: NotificateScreen());
   }
 }
