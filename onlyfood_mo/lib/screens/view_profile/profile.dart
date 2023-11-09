@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:onlyfood_mo/models/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -9,20 +12,43 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  String? jwtToken; // Variable to hold the JWT token
+  User? user;
+  @override
+  void initState() {
+    super.initState();
+    // Call a function to retrieve the JWT token when the screen initializes.
+    getJWTToken();
+  }
+
+  Future<void> getJWTToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('jwt');
+    setState(() {
+      jwtToken = token;
+    });
+
+    // Decode the JWT token
+    if (jwtToken != null) {
+      Map<String, dynamic> data = JwtDecoder.decode(jwtToken!);
+      // You can now access claims from the decoded JWT using user
+      user = User(
+          id: data['Id'],
+          lastName: data['LastName'],
+          userName: data['UserName'],
+          email: data['Email'],
+          role: data['Role']);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Thực hiện các hành động khi nhấn nút back
-            Navigator.of(context).pop();
-          },
-        ),
-        title: const Text('Tên User', style: TextStyle(color: Colors.black)),
+        title: Text(user?.lastName ?? 'Loading...',
+            style: TextStyle(color: Colors.black)),
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert, color: Colors.black),
@@ -152,11 +178,11 @@ class _ProfileState extends State<Profile> {
               const SizedBox(
                 height: 20,
               ),
-              const Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'User',
-                  style: TextStyle(
+                  user?.userName ?? 'Loading...',
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -166,7 +192,7 @@ class _ProfileState extends State<Profile> {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Bio: abcxyz',
+                  'Bio: Đẹp trai như Phát!!',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
