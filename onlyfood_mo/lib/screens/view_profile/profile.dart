@@ -47,13 +47,6 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Thực hiện các hành động khi nhấn nút back
-            Navigator.of(context).pop();
-          },
-        ),
         title: Text(user?.lastName ?? 'Loading...',
             style: TextStyle(color: Colors.black)),
         actions: [
