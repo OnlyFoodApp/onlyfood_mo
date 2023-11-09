@@ -60,6 +60,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: NotificateScreen());
+        home: LoginScreen());
   }
 }

@@ -48,7 +48,10 @@ class _ProfileState extends State<Profile> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(user?.lastName ?? 'Loading...',
-            style: TextStyle(color: Colors.black)),
+            style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 25)),
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert, color: Colors.black),

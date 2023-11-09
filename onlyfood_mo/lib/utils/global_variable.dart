@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onlyfood_mo/screens/newfeeds/newfeed_screen.dart';
+import 'package:onlyfood_mo/screens/notificate/notificate_screen.dart';
 import 'package:onlyfood_mo/screens/search/search_screen.dart';
 import 'package:onlyfood_mo/screens/view_profile/view_profile_main.dart';
 
@@ -12,9 +13,6 @@ List<Widget> homeScreenItems = [
     'Post',
     style: TextStyle(color: Colors.black),
   ),
-  const Text(
-    'Notification',
-    style: TextStyle(color: Colors.black),
-  ),
+  NotificateScreen(),
   const ViewProfileMain()
 ];
