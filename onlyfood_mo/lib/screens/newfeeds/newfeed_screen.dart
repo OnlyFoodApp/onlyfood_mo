@@ -7,12 +7,15 @@ import 'package:onlyfood_mo/main.dart';
 import 'package:onlyfood_mo/models/post.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 /////////////////////////////////////////////
 ///call api post////////////////////
 Future<List<Post>> fetchPost() async {
   final response = await http.get(
-    Uri.parse('https://onlyfoods.azurewebsites.net/api/v1/posts'),
+    Uri.parse('https://onlyfoods.azurewebsites.net/api/v1/posts/all'),
   );
 
   if (response.statusCode == 200) {
@@ -98,28 +101,29 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
             // Hiển thị một tiến trình đang tải nếu đang trong quá trình lấy dữ liệu từ API.
             print('Loading.....');
             return Container(
-                alignment: Alignment.center,
-                child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.asset(
-                        // you can replace this with Image.asset
-                        'assets/logo_only_food.png',
-                        fit: BoxFit.cover,
-                        height: 40,
-                        width: 40,
-                      ),
-                      // you can replace
-                      const CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
-                        strokeWidth: 2,
-                      ),
-                    ],
-                  ),
-                ));
+              alignment: Alignment.center,
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Image.asset(
+                      // you can replace this with Image.asset
+                      'assets/logo_only_food.png',
+                      fit: BoxFit.cover,
+                      height: 40,
+                      width: 40,
+                    ),
+                    // you can replace
+                    const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                      strokeWidth: 2,
+                    ),
+                  ],
+                ),
+              ),
+            );
           } else if (snapshot.hasError) {
             // Hiển thị thông báo lỗi nếu có lỗi xảy ra.
             return Text('Error: ${snapshot.error}');
@@ -157,9 +161,12 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                             ),
                           ),
                         ),
-                        const Text(
-                          "User",
-                          style: TextStyle(color: Colors.black),
+                        Text(
+                          (snapshot.data?[index].account
+                                  as Map<String, dynamic>?)?['username'] ??
+                              "", // Sử dụng as Map<String, dynamic>,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                         const Spacer(),
                         IconButton(
@@ -300,7 +307,18 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                             height: 10,
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              // Truyền dữ liệu cần thiết sang màn hình danh sách bình luận
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CommentScreen(
+                                    postId: snapshot.data?[index]
+                                        .id, // Truyền postId hoặc dữ liệu liên quan đến bình luận
+                                  ),
+                                ),
+                              );
+                            },
                             child: const Text(
                               "View all comments",
                               style: TextStyle(color: Colors.black),
