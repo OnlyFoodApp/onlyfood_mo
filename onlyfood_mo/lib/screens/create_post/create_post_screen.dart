@@ -10,12 +10,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';
 
 import 'package:async/async.dart';
-import 'dart:convert';
 
 class CreatePostScreen extends StatefulWidget {
   final Function()? onPostSuccess;
 
-  CreatePostScreen({Key? key, this.onPostSuccess}) : super(key: key);
+  const CreatePostScreen({Key? key, this.onPostSuccess}) : super(key: key);
 
   @override
   _CreatePostScreenState createState() => _CreatePostScreenState();
@@ -144,8 +143,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Post Successful'),
-            content: Text('Your post has been added successfully.'),
+            title: const Text('Post Successful'),
+            content: const Text('Your post has been added successfully.'),
             actions: [
               ElevatedButton(
                 onPressed: () {
@@ -153,7 +152,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                   Navigator.of(context).pop(); // Navigate back to NewFeedScreen
                   widget.onPostSuccess?.call(); // Call the callback
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
@@ -186,8 +185,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
           children: [
             Container(
               alignment: Alignment.center,
-              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-              child: Text(
+              margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+              child: const Text(
                 "Create an new post!",
                 style: TextStyle(
                     color: Colors.black,
@@ -216,7 +215,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                           fit: BoxFit.cover,
                         ),
                       )
-                    : Icon(
+                    : const Icon(
                         Icons.photo,
                         size: 50,
                         color: Colors.black,
@@ -226,42 +225,44 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
             const SizedBox(height: 16),
             TextField(
               controller: titleController,
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 hintText: 'Title',
                 labelText: 'Title',
                 enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Colors.grey), // Default border color
+                  borderSide: const BorderSide(
+                      color: Colors.grey), // Default border color
                   borderRadius:
                       BorderRadius.circular(10), // Optional: Border radius
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide:
                       BorderSide(color: Colors.black), // Focused border color
                 ),
                 labelStyle:
-                    TextStyle(color: Colors.black), // Label (Title) color
+                    const TextStyle(color: Colors.black), // Label (Title) color
               ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: contentController,
+              style: TextStyle(color: Colors.black),
               maxLines: 2,
               decoration: InputDecoration(
                 hintText: 'Content',
                 labelText: 'Content',
                 enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Colors.grey), // Default border color
+                  borderSide: const BorderSide(
+                      color: Colors.grey), // Default border color
                   borderRadius:
                       BorderRadius.circular(10), // Optional: Border radius
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide:
                       BorderSide(color: Colors.black), // Focused border color
                 ),
-                labelStyle:
-                    TextStyle(color: Colors.black), // Label (Content) color
+                labelStyle: const TextStyle(
+                    color: Colors.black), // Label (Content) color
               ),
             ),
             const SizedBox(height: 16),
@@ -270,7 +271,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
               ),
-              child: Text('Submit', style: TextStyle(color: Colors.white)),
+              child:
+                  const Text('Submit', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),

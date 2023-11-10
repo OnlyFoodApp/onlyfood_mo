@@ -1,8 +1,5 @@
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 import 'package:onlyfood_mo/widgets/text_field_input.dart';
 
@@ -30,8 +27,8 @@ class _SignUpScreenSecondState extends State<SignUpScreenSecond> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
               //Flexible là một widget trong Flutter cho phép bạn chỉ định
               // một phần trăm của không gian màn hình dành cho một widget
@@ -120,31 +117,31 @@ class _SignUpScreenSecondState extends State<SignUpScreenSecond> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                    ),
                     child: const Text(
                       "Account already?",
                       style: TextStyle(color: Colors.black),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8,
                     ),
                   ),
                   GestureDetector(
                     onTap: () {},
                     child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                      ),
                       child: const Text(
                         "Sign In?",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.black),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
                       ),
                     ),
                   ),
                 ],
               ),
 
-              Container(
+              SizedBox(
                 width: 147.97,
                 height: 15,
                 child: Stack(
@@ -244,8 +241,8 @@ class _SignUpScreenSecondState extends State<SignUpScreenSecond> {
               ),
 
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
             ],
           ),

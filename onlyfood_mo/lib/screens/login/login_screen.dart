@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
+import 'package:onlyfood_mo/screens/signup/signup_screen.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 import 'package:onlyfood_mo/widgets/text_field_input.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -59,32 +60,25 @@ class _LoginScreenState extends State<LoginScreen> {
         Map<String, dynamic> user = JwtDecoder.decode(token);
         await prefs.setString('jwt', token); // SAVE JWT
         await prefs.setString('accountId', user["Id"]);
+        await prefs.setString('role', user["Role"]);
         print("Token when we get inside pref: " +
             prefs.getString("jwt").toString());
 
         String role = user["Role"];
+        // Check if the widget is still mounted before navigating
         Navigator.pushReplacement(
-          // Push a new route and remove the current screen from the stack
           context,
           MaterialPageRoute(
-              builder: (context) =>
-                  const MobileScreenLayout()), // Navigate to HomeScreen after successful login
+            builder: (context) => const MobileScreenLayout(),
+          ),
         );
         return user;
       } else {
         throw Exception('Failed to log in');
       }
     } catch (e) {
-      // print("Error occurred: $e");
-      // Handle the error appropriately, for example, show an error message to the user
       throw Exception('Error occurred: $e');
     }
-    // finally {
-    //   setState(() {
-    //     _isLoading =
-    //         false; // Set loading state to false when the login process is completed
-    //   });
-    // }
   }
 
   @override
@@ -156,50 +150,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   //button login
                   InkWell(
-                    onTap: _isLoading ? null : () => login(),
+                    onTap: _isLoading
+                        ? null
+                        : () => login(), // Trigger login on tap
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       decoration: const ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(4),
                           ),
-                          color: buttonBlack),
+                        ),
+                        color: buttonBlack,
+                      ),
                       child: _isLoading
-                          ? FutureBuilder<Map<String, dynamic>>(
-                              future: login(),
-                              builder: (BuildContext context,
-                                  AsyncSnapshot<Map<String, dynamic>>
-                                      snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  // Show a loading indicator while the API call is in progress.
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                } else if (snapshot.hasError) {
-                                  // Handle error state
-                                  return Center(
-                                    child: Text('Error: ${snapshot.error}'),
-                                  );
-                                } else if (snapshot.hasData) {
-                                  // Handle successful login state
-                                  Map<String, dynamic> user = snapshot.data!;
-                                  // Render your UI based on the user data received from the API
-                                  return const Center(
-                                    child: Text('Login successful!'),
-                                  );
-                                } else {
-                                  // Handle other states if necessary
-                                  return const Center(
-                                    child: Text('Something went wrong'),
-                                  );
-                                }
-                              },
-                            ) // Show loading indicator if loading is in progress
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
                           : const Text("Log In"),
                     ),
                   ),
@@ -223,7 +192,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpScreen(),
+                            ),
+                          );
+                        },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             vertical: 8,

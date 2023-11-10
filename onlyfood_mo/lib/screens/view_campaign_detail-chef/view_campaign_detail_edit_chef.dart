@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ViewCampaignDetailChef extends StatefulWidget {
-  const ViewCampaignDetailChef({Key? key}) : super(key: key);
+class ViewCampaignDetailEditChef extends StatefulWidget {
+  const ViewCampaignDetailEditChef({super.key});
 
   @override
-  createState() => _ViewCampaignDetailChefState();
+  State<ViewCampaignDetailEditChef> createState() =>
+      _ViewCampaignDetailEditChefState();
 }
 
-class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
+class _ViewCampaignDetailEditChefState
+    extends State<ViewCampaignDetailEditChef> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +42,9 @@ class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
                     height: 1,
                   ),
                 ),
+                SizedBox(
+                  width: 5,
+                ),
                 Text(
                   'June 7, 2021',
                   style: TextStyle(
@@ -50,10 +55,16 @@ class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
                     height: 1,
                   ),
                 ),
+                SizedBox(
+                  width: 5,
+                ),
                 Icon(
                   Icons.circle,
                   size: 12.0,
                   color: Color(0xFF949494), // Màu sắc của chấm
+                ),
+                SizedBox(
+                  width: 5,
                 ),
                 Text(
                   'June 20, 2021',
@@ -76,7 +87,7 @@ class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
                   width: 20,
                 ),
                 Text(
-                  'DateCreate:',
+                  'Date Create:',
                   style: TextStyle(
                     color: Color(0xFF949494),
                     fontSize: 15,
@@ -84,6 +95,9 @@ class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
                     fontWeight: FontWeight.w700,
                     height: 1,
                   ),
+                ),
+                SizedBox(
+                  width: 5,
                 ),
                 Text(
                   'June 7, 2021',
@@ -103,11 +117,10 @@ class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
                 print('Square Clicked');
               },
               child: Container(
-                height: 250,
                 margin: const EdgeInsets.all(
                     16.0), // Có thể điều chỉnh margin theo ý muốn
                 decoration: BoxDecoration(
-                  color: Colors.grey[200], // Màu nền của Container bọc ngoài
+                  // color: Colors.grey[200], // Màu nền của Container bọc ngoài
                   borderRadius: BorderRadius.circular(16.0),
                 ),
                 child: Column(
@@ -126,40 +139,40 @@ class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
                             ),
                           ),
                         ),
-                        Positioned(
-                          top: 16.0,
-                          left: 16.0,
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: const Text(
-                              '\$10.99',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 110,
-                          left: 16,
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: const Text(
-                              '4,5/5',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
+                        // Positioned(
+                        //   top: 16.0,
+                        //   left: 16.0,
+                        //   child: Container(
+                        //     padding: const EdgeInsets.all(8.0),
+                        //     decoration: BoxDecoration(
+                        //       color: Colors.white,
+                        //       borderRadius: BorderRadius.circular(8.0),
+                        //     ),
+                        //     child: const Text(
+                        //       '\$10.99',
+                        //       style: TextStyle(
+                        //         color: Colors.black,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        // Positioned(
+                        //   top: 110,
+                        //   left: 16,
+                        //   child: Container(
+                        //     padding: const EdgeInsets.all(8.0),
+                        //     decoration: BoxDecoration(
+                        //       color: Colors.white,
+                        //       borderRadius: BorderRadius.circular(8.0),
+                        //     ),
+                        //     child: const Text(
+                        //       '4,5/5',
+                        //       style: TextStyle(
+                        //         color: Colors.black,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         Positioned(
                           bottom: 16.0,
                           right: 16.0,
@@ -173,58 +186,74 @@ class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10)),
                               padding: const EdgeInsets.all(8.0),
-                              child:
-                                  const Icon(Icons.edit, color: Colors.black),
+                              child: const Icon(Icons.insert_photo,
+                                  color: Colors.black),
                             ),
                           ),
                         ),
-                        Positioned(
-                          bottom: 16.0,
-                          right: 72.0,
-                          child: InkWell(
-                            onTap: () {
-                              print('Delete Button Clicked');
-                              // Đặt logic xử lý khi nút được nhấp ở đây
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10)),
-                              padding: const EdgeInsets.all(8.0),
-                              child:
-                                  const Icon(Icons.delete, color: Colors.black),
-                            ),
-                          ),
-                        ),
+                        // Positioned(
+                        //   bottom: 16.0,
+                        //   right: 72.0,
+                        //   child: InkWell(
+                        //     onTap: () {
+                        //       print('Delete Button Clicked');
+                        //       // Đặt logic xử lý khi nút được nhấp ở đây
+                        //     },
+                        //     child: Container(
+                        //       decoration: BoxDecoration(
+                        //           color: Colors.white,
+                        //           borderRadius: BorderRadius.circular(10)),
+                        //       padding: const EdgeInsets.all(8.0),
+                        //       child:
+                        //           const Icon(Icons.delete, color: Colors.black),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: const Text(
-                        'Chicken Hawaiian',
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10.0, right: 10.0, bottom: 5.0, top: 5.0),
+                      child: TextField(
                         style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        decoration: InputDecoration(
+                          labelText: 'Food name',
+                          labelStyle: TextStyle(
                             color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1, // Số dòng tối đa để hiển thị
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                        ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: const Text(
-                        'Chicken Hawaiian',
-                        style: TextStyle(color: Colors.black, fontSize: 15),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1, // Số dòng tối đa để hiển thị
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          left: 10.0, right: 10.0, bottom: 5.0, top: 5.0),
+                      child: TextField(
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        decoration: InputDecoration(
+                          labelText: 'Bio',
+                          labelStyle: TextStyle(
+                            color: Colors.black,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                        ),
                       ),
                     ),
                   ],

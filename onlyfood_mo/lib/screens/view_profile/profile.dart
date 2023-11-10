@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:onlyfood_mo/models/user.dart';
+import 'package:onlyfood_mo/screens/profile_editing/profile_editing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
@@ -48,13 +49,20 @@ class _ProfileState extends State<Profile> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(user?.lastName ?? 'Loading...',
-            style: TextStyle(color: Colors.black)),
+            style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 25)),
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert, color: Colors.black),
             onPressed: () {
-              // Thực hiện các hành động khi nhấn nút menu
-              // Hiển thị menu hoặc thực hiện các hành động tùy thuộc vào ý muốn của bạn
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfileEditing(),
+                ),
+              );
             },
           ),
         ],
@@ -88,7 +96,7 @@ class _ProfileState extends State<Profile> {
                     const SizedBox(width: 25),
                     const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 12),
+                        padding: EdgeInsets.only(top: 12),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -259,7 +267,7 @@ class _ProfileState extends State<Profile> {
                             MaterialStateProperty.all<Color>(Colors.white),
                         // Màu của nền button khi được nhấn
                         overlayColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 237, 228, 228)),
+                            const Color.fromARGB(255, 237, 228, 228)),
                         // Viền của button
                         side: MaterialStateProperty.all<BorderSide>(
                             const BorderSide(color: Colors.white)),

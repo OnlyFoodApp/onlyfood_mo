@@ -11,7 +11,7 @@ import 'package:onlyfood_mo/models/comment.dart';
 Future<List<Comment>> fetchComment(String postId) async {
   // late String id = '';
   final response = await http.get(
-    Uri.parse('https://onlyfoods.azurewebsites.net/api/v1/comments/' + postId),
+    Uri.parse('https://onlyfoods.azurewebsites.net/api/v1/comments/$postId'),
   );
 
   if (response.statusCode == 200) {
@@ -102,7 +102,7 @@ class _CommentScreenState extends State<CommentScreen> {
                   return Text('Error: ${snapshot.error}');
                 } else if (!snapshot.hasData) {
                   // Hiển thị thông báo nếu không có dữ liệu được trả về.
-                  return Text('No data available.');
+                  return const Text('No data available.');
                 } else {
                   // Hiển thị danh sách bình luận từ API ở đây.
                   // Ví dụ: comments[index].content để truy cập nội dung bình luận.
@@ -114,11 +114,11 @@ class _CommentScreenState extends State<CommentScreen> {
                           children: <Widget>[
                             Container(
                               height: 50,
-                              margin: EdgeInsets.only(
+                              margin: const EdgeInsets.only(
                                   top: 10, bottom: 10, left: 10),
                               child: Row(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 50,
                                     height: 50,
                                     child: CircleAvatar(
@@ -133,7 +133,7 @@ class _CommentScreenState extends State<CommentScreen> {
                                   Container(
                                       width: 260,
                                       height: 50,
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 10, top: 5, right: 10),
                                       child: Column(
                                         crossAxisAlignment:
@@ -146,11 +146,11 @@ class _CommentScreenState extends State<CommentScreen> {
                                                           .username ??
                                                       "",
                                                   textAlign: TextAlign.left,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
                                                   )),
-                                              Icon(
+                                              const Icon(
                                                 Icons.edit,
                                                 size: 16,
                                                 color: Colors.black87,
@@ -163,7 +163,7 @@ class _CommentScreenState extends State<CommentScreen> {
                                                   color: Colors.black)),
                                         ],
                                       )),
-                                  Container(
+                                  SizedBox(
                                     width: 80,
                                     height: 50,
                                     child: Column(
@@ -203,7 +203,7 @@ class _CommentScreenState extends State<CommentScreen> {
             padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                Container(
+                SizedBox(
                   width: 50,
                   height: 50,
                   child: CircleAvatar(
@@ -231,7 +231,7 @@ class _CommentScreenState extends State<CommentScreen> {
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                             hintStyle: TextStyle(
-                                color: const Color.fromARGB(255, 94, 91,
+                                color: Color.fromARGB(255, 94, 91,
                                     91)) // Khoảng cách từ nội dung đến viền
                             ),
                       ),
@@ -242,9 +242,9 @@ class _CommentScreenState extends State<CommentScreen> {
                   onPressed: () {
                     // Xử lý sự kiện khi nhấn nút "Submit"
                   },
-                  child: Text("Submit"),
                   style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(Colors.black)),
+                  child: const Text("Submit"),
                 ),
               ],
             ),

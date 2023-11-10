@@ -1,10 +1,6 @@
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
-import 'package:onlyfood_mo/widgets/text_field_input.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -17,8 +13,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            // Thực hiện các hành động khi nhấn nút back
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: double.infinity, // vô cùng
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,7 +102,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               const SizedBox(height: 40),
 
-              Container(
+              SizedBox(
                 width: 147.97,
                 height: 15,
                 child: Stack(
@@ -169,8 +176,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
               const Column(
                 children: [
