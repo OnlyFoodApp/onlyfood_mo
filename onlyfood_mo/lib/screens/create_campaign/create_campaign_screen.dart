@@ -139,7 +139,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
         descriptionController.text,
         _selectedStartDate!,
         _selectedEndDate!,
-        chefID!,
+        "5849ced6-f47f-4d3b-a46f-2a40c0d711fc",
         0,
       );
 
