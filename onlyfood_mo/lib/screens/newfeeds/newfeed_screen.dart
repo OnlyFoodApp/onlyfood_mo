@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
 import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
 import 'package:onlyfood_mo/screens/home_dashboard-chef/home_dashboad_chef.dart';
+import 'package:onlyfood_mo/screens/post_campaign/post_campaign_screen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -96,6 +97,19 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => (HomeDashboadChef()),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.campaign, color: Colors.black),
+            onPressed: () {
+              // Thực hiện các hành động khi nhấn nút menu
+              // Hiển thị menu hoặc thực hiện các hành động tùy thuộc vào ý muốn của bạn
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PostCampaignScreen(),
                 ),
               );
             },
@@ -205,12 +219,12 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          "On-going: ",
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 160, 143, 93),
-                              fontWeight: FontWeight.bold),
-                        ),
+                        // Text(
+                        //   "On-going: ",
+                        //   style: TextStyle(
+                        //       color: Color.fromARGB(255, 160, 143, 93),
+                        //       fontWeight: FontWeight.bold),
+                        // ),
                         Text(
                           "June 7 2021",
                           style: TextStyle(color: Colors.black),

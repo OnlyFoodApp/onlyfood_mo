@@ -7,7 +7,9 @@ import 'package:onlyfood_mo/main.dart';
 import 'package:onlyfood_mo/models/postcampaign.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
 import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
+import 'package:onlyfood_mo/screens/home_dashboard-chef/home_dashboad_chef.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -38,14 +40,14 @@ Future<List<PostCampaign>> fetchPostCampaign() async {
 
 ///////////////////////////
 
-class NewfeedScreen extends StatefulWidget {
-  const NewfeedScreen({Key? key}) : super(key: key);
+class PostCampaignScreen extends StatefulWidget {
+  const PostCampaignScreen({Key? key}) : super(key: key);
 
   @override
-  _NewfeedScreenState createState() => _NewfeedScreenState();
+  _PostCampaignScreenState createState() => _PostCampaignScreenState();
 }
 
-class _NewfeedScreenState extends State<NewfeedScreen> {
+class _PostCampaignScreenState extends State<PostCampaignScreen> {
   List<String> postImage = [
     'https://i.pinimg.com/564x/9e/9f/f4/9e9ff43fad6077d06c01e740327b555d.jpg',
     'https://i.pinimg.com/564x/55/6f/97/556f97290b01ffb97d1ca63669958267.jpg',
@@ -76,7 +78,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
             ),
             const SizedBox(width: 8), // Khoảng cách giữa biểu tượng và tiêu đề
             const Text(
-              'OnlyFood',
+              'Campaign',
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -87,10 +89,42 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
         ),
         actions: [
           IconButton(
+            icon: const Icon(Icons.storefront, color: Colors.black),
+            onPressed: () {
+              // Thực hiện các hành động khi nhấn nút menu
+              // Hiển thị menu hoặc thực hiện các hành động tùy thuộc vào ý muốn của bạn
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => (HomeDashboadChef()),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.campaign, color: Colors.black),
+            onPressed: () {
+              // Thực hiện các hành động khi nhấn nút menu
+              // Hiển thị menu hoặc thực hiện các hành động tùy thuộc vào ý muốn của bạn
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PostCampaignScreen(),
+                ),
+              );
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black),
             onPressed: () {
               // Thực hiện các hành động khi nhấn nút menu
               // Hiển thị menu hoặc thực hiện các hành động tùy thuộc vào ý muốn của bạn
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ViewMyCart(),
+                ),
+              );
             },
           ),
         ],
@@ -163,11 +197,8 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                           ),
                         ),
                         Text(
-                          (snapshot.data?[index].chef
-                                  as Map<String, dynamic>?)?['username'] ??
-                              "", // Sử dụng as Map<String, dynamic>,
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                          snapshot.data?[index].username ?? "",
+                          // Sử dụng as Map<String, dynamic>,
                         ),
                         const Spacer(),
                         IconButton(

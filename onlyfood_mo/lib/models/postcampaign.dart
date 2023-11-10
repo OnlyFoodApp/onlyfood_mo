@@ -2,10 +2,10 @@ class PostCampaign {
   late String id;
   late String campaignName;
   late String description;
-  late DateTime startDate;
-  late DateTime endDate;
+  late String startDate;
+  late String endDate;
   late String chefID;
-  late Object chef;
+  late String username;
 
   PostCampaign({
     required this.id,
@@ -14,7 +14,7 @@ class PostCampaign {
     required this.startDate,
     required this.endDate,
     required this.chefID,
-    required this.chef,
+    required this.username,
   });
 
   factory PostCampaign.fromJson(Map<String, dynamic> json) {
@@ -22,10 +22,10 @@ class PostCampaign {
       id: json['id'] as String? ?? '',
       campaignName: json['campaignName'] as String? ?? '',
       description: json['description'] as String? ?? '',
-      startDate: json['startDate'],
-      endDate: json['endDate'],
+      startDate: json['startDate'] as String? ?? '',
+      endDate: json['endDate'] as String? ?? '',
       chefID: json['isDeleted'] as String? ?? '',
-      chef: json['chef'] as Object? ?? [],
+      username: json['username'] as String? ?? '',
     );
   }
 }
