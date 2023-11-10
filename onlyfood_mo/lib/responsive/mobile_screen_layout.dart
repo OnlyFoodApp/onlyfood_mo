@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:onlyfood_mo/screens/create_campaign/create_campaign_screen.dart';
 import 'package:onlyfood_mo/screens/create_post/create_post_screen.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 import 'package:onlyfood_mo/utils/global_variable.dart';
@@ -47,7 +48,18 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               title: const Text('Create Campaign'),
               onTap: () {
                 // Xử lý khi người dùng chọn "Create Campaign"
-                Navigator.pop(context); // Đóng popup
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CreateCampaignScreen(
+                      onCampaignSuccess: () {
+                        // Handle navigation or any other action after post success
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                );
               },
             ),
           ],
