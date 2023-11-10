@@ -1,21 +1,23 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:onlyfood_mo/models/post.dart';
+import 'package:onlyfood_mo/main.dart';
+import 'package:onlyfood_mo/models/postcampaign.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
 import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
 import 'package:onlyfood_mo/screens/home_dashboard-chef/home_dashboad_chef.dart';
-import 'package:onlyfood_mo/screens/post_campaign/post_campaign_screen.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
 
 /////////////////////////////////////////////
 ///call api post////////////////////
-Future<List<Post>> fetchPost() async {
+Future<List<PostCampaign>> fetchPostCampaign() async {
   final response = await http.get(
-    Uri.parse('https://onlyfoods.azurewebsites.net/api/v1/posts/all'),
+    Uri.parse('https://onlyfoods.azurewebsites.net/api/v1/campaigns/all'),
   );
 
   if (response.statusCode == 200) {
@@ -24,9 +26,10 @@ Future<List<Post>> fetchPost() async {
 
     if (data is List) {
       int dataLength = data.length;
-      List<Post> posts = data.map((data) => Post.fromJson(data)).toList();
-      print("data: ${posts.length}");
-      return posts;
+      List<PostCampaign> postscampaign =
+          data.map((data) => PostCampaign.fromJson(data)).toList();
+      print("data: " + postscampaign.length.toString());
+      return postscampaign;
     } else {
       throw Exception('Data is not in the expected format');
     }
@@ -37,29 +40,29 @@ Future<List<Post>> fetchPost() async {
 
 ///////////////////////////
 
-class NewfeedScreen extends StatefulWidget {
-  const NewfeedScreen({Key? key}) : super(key: key);
+class PostCampaignScreen extends StatefulWidget {
+  const PostCampaignScreen({Key? key}) : super(key: key);
 
   @override
-  _NewfeedScreenState createState() => _NewfeedScreenState();
+  _PostCampaignScreenState createState() => _PostCampaignScreenState();
 }
 
-class _NewfeedScreenState extends State<NewfeedScreen> {
+class _PostCampaignScreenState extends State<PostCampaignScreen> {
   List<String> postImage = [
-    'https://i.pinimg.com/564x/4e/e3/2a/4ee32a3244fbdad41582edfd382b2b27.jpg',
-    'https://i.pinimg.com/564x/01/a8/b2/01a8b20022d3ac8d1c0ad960e7b67466.jpg',
-    'https://i.pinimg.com/736x/20/e7/a0/20e7a07ca164e7c73a1dbe57faa2f591.jpg',
-    'https://i.pinimg.com/564x/45/8a/95/458a952b0cec06c69c6b0833cff9d312.jpg',
-    'https://i.pinimg.com/736x/05/cd/f2/05cdf23aac8d84794b69fdf219967716.jpg',
-    'https://i.pinimg.com/564x/4b/34/6f/4b346f43bee385e396edcf23c0c3288b.jpg',
+    'https://i.pinimg.com/564x/9e/9f/f4/9e9ff43fad6077d06c01e740327b555d.jpg',
+    'https://i.pinimg.com/564x/55/6f/97/556f97290b01ffb97d1ca63669958267.jpg',
+    'https://i.pinimg.com/564x/e4/a3/c8/e4a3c8294c89baec96c58faeb456dee6.jpg',
+    'https://i.pinimg.com/564x/f2/bb/49/f2bb49eaf96afedf59f39fc508650364.jpg',
+    'https://i.pinimg.com/564x/6f/96/e2/6f96e2ac3a39d7561fcc35c96b648903.jpg',
+    'https://i.pinimg.com/564x/20/07/26/200726a6f1176021c24f8e70443f34bf.jpg',
   ];
 
-  late Future<List<Post>> listPost;
+  late Future<List<PostCampaign>> listPostCampaign;
 
   @override
   void initState() {
     super.initState();
-    listPost = fetchPost();
+    listPostCampaign = fetchPostCampaign();
   }
 
   @override
@@ -75,7 +78,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
             ),
             const SizedBox(width: 8), // Khoảng cách giữa biểu tượng và tiêu đề
             const Text(
-              'OnlyFood',
+              'Campaign',
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -93,7 +96,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => (const HomeDashboadChef()),
+                  builder: (context) => (HomeDashboadChef()),
                 ),
               );
             },
@@ -119,15 +122,15 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ViewMyCart(),
+                  builder: (context) => ViewMyCart(),
                 ),
               );
             },
           ),
         ],
       ),
-      body: FutureBuilder<List<Post>>(
-        future: listPost,
+      body: FutureBuilder<List<PostCampaign>>(
+        future: listPostCampaign,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Hiển thị một tiến trình đang tải nếu đang trong quá trình lấy dữ liệu từ API.
@@ -161,10 +164,10 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
             return Text('Error: ${snapshot.error}');
           } else if (!snapshot.hasData) {
             // Hiển thị thông báo nếu không có dữ liệu được trả về.
-            return const Text('No data available.');
+            return Text('No data available.');
           } else {
             // Hiển thị danh sách bài viết từ API ở đây.
-            // Ví dụ: posts.data.title để truy cập tiêu đề bài viết.
+            // Ví dụ: postscampaign.data.title để truy cập tiêu đề bài viết.
             return ListView.builder(
               itemCount:
                   snapshot.data?.length, // Số lượng bài viết bạn muốn hiển thị.
@@ -172,7 +175,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //Header Post
+                    //Header PostCampaign
                     Row(
                       children: [
                         Container(
@@ -194,11 +197,8 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                           ),
                         ),
                         Text(
-                          (snapshot.data?[index].account
-                                  as Map<String, dynamic>?)?['username'] ??
-                              "", // Sử dụng as Map<String, dynamic>,
-                          style: const TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                          snapshot.data?[index].username ?? "",
+                          // Sử dụng as Map<String, dynamic>,
                         ),
                         const Spacer(),
                         IconButton(
@@ -216,12 +216,12 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                         SizedBox(
                           width: 10,
                         ),
-                        // Text(
-                        //   "On-going: ",
-                        //   style: TextStyle(
-                        //       color: Color.fromARGB(255, 160, 143, 93),
-                        //       fontWeight: FontWeight.bold),
-                        // ),
+                        Text(
+                          "On-going: ",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 160, 143, 93),
+                              fontWeight: FontWeight.bold),
+                        ),
                         Text(
                           "June 7 2021",
                           style: TextStyle(color: Colors.black),
@@ -242,7 +242,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                     //Image post
 
                     Image.network(
-                      snapshot.data![index].mediaURLs,
+                      postImage[index % postImage.length],
                       width: double.infinity,
                       height: 400,
                       fit: BoxFit.cover,
@@ -302,15 +302,15 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                         children: [
                           RichText(
                             text: TextSpan(
-                              style: const TextStyle(color: Colors.black),
+                              style: TextStyle(color: Colors.black),
                               children: [
-                                const TextSpan(
+                                TextSpan(
                                   text: "Description: ",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 TextSpan(
-                                  text: snapshot.data?[index].content,
-                                  style: const TextStyle(color: Colors.black),
+                                  text: snapshot.data?[index].description,
+                                  style: TextStyle(color: Colors.black),
                                 ),
                               ],
                             ),
