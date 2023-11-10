@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:onlyfood_mo/main.dart';
 import 'package:onlyfood_mo/models/postcampaign.dart';
 
@@ -59,6 +60,18 @@ class _PostCampaignScreenState extends State<PostCampaignScreen> {
 
   late Future<List<PostCampaign>> listPostCampaign;
 
+  String? _formatDate(String? inputDate) {
+    if (inputDate == null || inputDate.isEmpty) {
+      return null;
+    }
+
+    // Parse the input date
+    DateTime parsedDate = DateTime.parse(inputDate);
+
+    // Format the date as dd/mm/yyyy
+    return DateFormat('dd/MM/yyyy').format(parsedDate);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -69,14 +82,21 @@ class _PostCampaignScreenState extends State<PostCampaignScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            // Thực hiện các hành động khi nhấn nút back
+            Navigator.of(context).pop();
+          },
+        ),
         title: Row(
           children: [
             Image.asset(
               'assets/logo_only_food.png', // Đường dẫn đến hình ảnh logo
               width: 40, // Kích thước của hình ảnh
             ),
-            const SizedBox(width: 8), // Khoảng cách giữa biểu tượng và tiêu đề
             const Text(
               'Campaign',
               style: TextStyle(
@@ -97,19 +117,6 @@ class _PostCampaignScreenState extends State<PostCampaignScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => (HomeDashboadChef()),
-                ),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.campaign, color: Colors.black),
-            onPressed: () {
-              // Thực hiện các hành động khi nhấn nút menu
-              // Hiển thị menu hoặc thực hiện các hành động tùy thuộc vào ý muốn của bạn
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PostCampaignScreen(),
                 ),
               );
             },
@@ -198,7 +205,12 @@ class _PostCampaignScreenState extends State<PostCampaignScreen> {
                         ),
                         Text(
                           snapshot.data?[index].username ?? "",
-                          // Sử dụng as Map<String, dynamic>,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight
+                                  .bold // Thay đổi màu theo ý muốn của bạn
+                              // Các thuộc tính khác của TextStyle nếu cần
+                              ),
                         ),
                         const Spacer(),
                         IconButton(
@@ -211,7 +223,7 @@ class _PostCampaignScreenState extends State<PostCampaignScreen> {
                         ),
                       ],
                     ),
-                    const Row(
+                    Row(
                       children: [
                         SizedBox(
                           width: 10,
@@ -223,7 +235,7 @@ class _PostCampaignScreenState extends State<PostCampaignScreen> {
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "June 7 2021",
+                          _formatDate(snapshot.data?[index].startDate) ?? "",
                           style: TextStyle(color: Colors.black),
                         ),
                         Text(
@@ -231,7 +243,7 @@ class _PostCampaignScreenState extends State<PostCampaignScreen> {
                           style: TextStyle(color: Colors.black),
                         ),
                         Text(
-                          "June 20 2021",
+                          _formatDate(snapshot.data?[index].endDate) ?? "",
                           style: TextStyle(color: Colors.black),
                         ),
                       ],

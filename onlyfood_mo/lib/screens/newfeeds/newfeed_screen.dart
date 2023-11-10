@@ -10,7 +10,6 @@ import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
 import 'package:onlyfood_mo/screens/home_dashboard-chef/home_dashboad_chef.dart';
 import 'package:onlyfood_mo/screens/post_campaign/post_campaign_screen.dart';
 
-
 /////////////////////////////////////////////
 ///call api post////////////////////
 Future<List<Post>> fetchPost() async {
@@ -73,7 +72,6 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
               'assets/logo_only_food.png', // Đường dẫn đến hình ảnh logo
               width: 40, // Kích thước của hình ảnh
             ),
-            const SizedBox(width: 8), // Khoảng cách giữa biểu tượng và tiêu đề
             const Text(
               'OnlyFood',
               style: TextStyle(

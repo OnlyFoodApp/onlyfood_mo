@@ -149,50 +149,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   //button login
                   InkWell(
-                    onTap: _isLoading ? null : () => login(),
+                    onTap: _isLoading
+                        ? null
+                        : () => login(), // Trigger login on tap
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       decoration: const ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(4),
                           ),
-                          color: buttonBlack),
+                        ),
+                        color: buttonBlack,
+                      ),
                       child: _isLoading
-                          ? FutureBuilder<Map<String, dynamic>>(
-                              future: login(),
-                              builder: (BuildContext context,
-                                  AsyncSnapshot<Map<String, dynamic>>
-                                      snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  // Show a loading indicator while the API call is in progress.
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                } else if (snapshot.hasError) {
-                                  // Handle error state
-                                  return Center(
-                                    child: Text('Error: ${snapshot.error}'),
-                                  );
-                                } else if (snapshot.hasData) {
-                                  // Handle successful login state
-                                  Map<String, dynamic> user = snapshot.data!;
-                                  // Render your UI based on the user data received from the API
-                                  return const Center(
-                                    child: Text('Login successful!'),
-                                  );
-                                } else {
-                                  // Handle other states if necessary
-                                  return const Center(
-                                    child: Text('Something went wrong'),
-                                  );
-                                }
-                              },
-                            ) // Show loading indicator if loading is in progress
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
                           : const Text("Log In"),
                     ),
                   ),

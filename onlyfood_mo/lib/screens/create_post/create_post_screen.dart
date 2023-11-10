@@ -225,12 +225,13 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
             const SizedBox(height: 16),
             TextField(
               controller: titleController,
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 hintText: 'Title',
                 labelText: 'Title',
                 enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: Colors.grey), // Default border color
+                  borderSide: const BorderSide(
+                      color: Colors.grey), // Default border color
                   borderRadius:
                       BorderRadius.circular(10), // Optional: Border radius
                 ),
@@ -245,13 +246,14 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
             const SizedBox(height: 16),
             TextField(
               controller: contentController,
+              style: TextStyle(color: Colors.black),
               maxLines: 2,
               decoration: InputDecoration(
                 hintText: 'Content',
                 labelText: 'Content',
                 enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: Colors.grey), // Default border color
+                  borderSide: const BorderSide(
+                      color: Colors.grey), // Default border color
                   borderRadius:
                       BorderRadius.circular(10), // Optional: Border radius
                 ),
@@ -259,8 +261,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                   borderSide:
                       BorderSide(color: Colors.black), // Focused border color
                 ),
-                labelStyle:
-                    const TextStyle(color: Colors.black), // Label (Content) color
+                labelStyle: const TextStyle(
+                    color: Colors.black), // Label (Content) color
               ),
             ),
             const SizedBox(height: 16),
@@ -269,7 +271,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
               ),
-              child: const Text('Submit', style: TextStyle(color: Colors.white)),
+              child:
+                  const Text('Submit', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
