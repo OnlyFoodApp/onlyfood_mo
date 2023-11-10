@@ -60,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Map<String, dynamic> user = JwtDecoder.decode(token);
         await prefs.setString('jwt', token); // SAVE JWT
         await prefs.setString('accountId', user["Id"]);
+        await prefs.setString('role', user["Role"]);
         print("Token when we get inside pref: " +
             prefs.getString("jwt").toString());
 
