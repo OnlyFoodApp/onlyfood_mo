@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:onlyfood_mo/main.dart';
 import 'package:onlyfood_mo/models/post.dart';
 
 import 'package:http/http.dart' as http;
@@ -11,7 +9,6 @@ import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
 import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
 import 'package:onlyfood_mo/screens/home_dashboard-chef/home_dashboad_chef.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
 
 /////////////////////////////////////////////
 ///call api post////////////////////
@@ -27,7 +24,7 @@ Future<List<Post>> fetchPost() async {
     if (data is List) {
       int dataLength = data.length;
       List<Post> posts = data.map((data) => Post.fromJson(data)).toList();
-      print("data: " + posts.length.toString());
+      print("data: ${posts.length}");
       return posts;
     } else {
       throw Exception('Data is not in the expected format');
@@ -95,7 +92,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => (HomeDashboadChef()),
+                  builder: (context) => (const HomeDashboadChef()),
                 ),
               );
             },
@@ -108,7 +105,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ViewMyCart(),
+                  builder: (context) => const ViewMyCart(),
                 ),
               );
             },
@@ -150,7 +147,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
             return Text('Error: ${snapshot.error}');
           } else if (!snapshot.hasData) {
             // Hiển thị thông báo nếu không có dữ liệu được trả về.
-            return Text('No data available.');
+            return const Text('No data available.');
           } else {
             // Hiển thị danh sách bài viết từ API ở đây.
             // Ví dụ: posts.data.title để truy cập tiêu đề bài viết.
@@ -186,7 +183,7 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                           (snapshot.data?[index].account
                                   as Map<String, dynamic>?)?['username'] ??
                               "", // Sử dụng as Map<String, dynamic>,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                         const Spacer(),
@@ -291,15 +288,15 @@ class _NewfeedScreenState extends State<NewfeedScreen> {
                         children: [
                           RichText(
                             text: TextSpan(
-                              style: TextStyle(color: Colors.black),
+                              style: const TextStyle(color: Colors.black),
                               children: [
-                                TextSpan(
+                                const TextSpan(
                                   text: "Description: ",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 TextSpan(
                                   text: snapshot.data?[index].content,
-                                  style: TextStyle(color: Colors.black),
+                                  style: const TextStyle(color: Colors.black),
                                 ),
                               ],
                             ),

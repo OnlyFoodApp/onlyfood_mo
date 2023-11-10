@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:onlyfood_mo/utils/colors.dart';
-import 'package:onlyfood_mo/widgets/text_field_input.dart';
 
 class ProfileEditing extends StatefulWidget {
   const ProfileEditing({Key? key}) : super(key: key);

@@ -224,9 +224,9 @@ class _ViewPostDetailState extends State<ViewPostDetail> {
               ),
               Container(
                 color: Colors.grey[300],
-                padding: EdgeInsets.only(top: 7, right: 10, left: 7, bottom: 7),
-                margin: EdgeInsets.only(right: 10),
-                child: Row(
+                padding: const EdgeInsets.only(top: 7, right: 10, left: 7, bottom: 7),
+                margin: const EdgeInsets.only(right: 10),
+                child: const Row(
                   children: [
                     Icon(
                       Icons.shopping_bag_outlined,

@@ -139,21 +139,21 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
                                     color: Colors.grey.withOpacity(0.5),
                                     spreadRadius: 2,
                                     blurRadius: 5,
-                                    offset: Offset(0, 3),
+                                    offset: const Offset(0, 3),
                                   ),
                                 ],
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     '3 items',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(height: 8.0),
-                                  Row(
+                                  const SizedBox(height: 8.0),
+                                  const Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
@@ -171,8 +171,8 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 8.0),
-                                  Row(
+                                  const SizedBox(height: 8.0),
+                                  const Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Text(
@@ -184,12 +184,12 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 16.0),
+                                  const SizedBox(height: 16.0),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      ElevatedButton(
+                                      const ElevatedButton(
                                         onPressed: null,
                                         child: Text('Cancel'),
                                       ),
@@ -199,11 +199,11 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  ViewCampaignDetailChef(),
+                                                  const ViewCampaignDetailChef(),
                                             ),
                                           )
                                         },
-                                        child: Text('Details'),
+                                        child: const Text('Details'),
                                       ),
                                     ],
                                   ),
@@ -284,7 +284,7 @@ class _HomeDashboadChefState extends State<HomeDashboadChef> {
                                     color: Colors.grey.withOpacity(0.5),
                                     spreadRadius: 2,
                                     blurRadius: 5,
-                                    offset: Offset(0, 3),
+                                    offset: const Offset(0, 3),
                                   ),
                                 ],
                               ),

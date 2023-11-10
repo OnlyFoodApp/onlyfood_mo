@@ -49,7 +49,7 @@ class _ProfileState extends State<Profile> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(user?.lastName ?? 'Loading...',
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 25)),
@@ -60,7 +60,7 @@ class _ProfileState extends State<Profile> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProfileEditing(),
+                  builder: (context) => const ProfileEditing(),
                 ),
               );
             },
@@ -96,7 +96,7 @@ class _ProfileState extends State<Profile> {
                     const SizedBox(width: 25),
                     const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 12),
+                        padding: EdgeInsets.only(top: 12),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -267,7 +267,7 @@ class _ProfileState extends State<Profile> {
                             MaterialStateProperty.all<Color>(Colors.white),
                         // Màu của nền button khi được nhấn
                         overlayColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 237, 228, 228)),
+                            const Color.fromARGB(255, 237, 228, 228)),
                         // Viền của button
                         side: MaterialStateProperty.all<BorderSide>(
                             const BorderSide(color: Colors.white)),

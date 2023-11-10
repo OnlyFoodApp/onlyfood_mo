@@ -104,7 +104,7 @@ class _ViewCampaignDetailChefState extends State<ViewCampaignDetailChef> {
               },
               child: Container(
                 height: 250,
-                margin: EdgeInsets.all(
+                margin: const EdgeInsets.all(
                     16.0), // Có thể điều chỉnh margin theo ý muốn
                 decoration: BoxDecoration(
                   color: Colors.grey[200], // Màu nền của Container bọc ngoài

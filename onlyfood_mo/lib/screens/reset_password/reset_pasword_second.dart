@@ -93,7 +93,6 @@ class _ResetPasswordSecondState extends State<ResetPasswordSecond> {
               //button login
               InkWell(
                 child: Container(
-                  child: const Text("Reset password"),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 20),
@@ -104,14 +103,15 @@ class _ResetPasswordSecondState extends State<ResetPasswordSecond> {
                         ),
                       ),
                       color: buttonBlack),
+                  child: const Text("Reset password"),
                 ),
               ),
 
               //transitioning to signing up
 
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
             ],
           ),

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ViewCampaignDetailEditChef extends StatefulWidget {
@@ -118,7 +117,7 @@ class _ViewCampaignDetailEditChefState
                 print('Square Clicked');
               },
               child: Container(
-                margin: EdgeInsets.all(
+                margin: const EdgeInsets.all(
                     16.0), // Có thể điều chỉnh margin theo ý muốn
                 decoration: BoxDecoration(
                   // color: Colors.grey[200], // Màu nền của Container bọc ngoài
@@ -215,8 +214,8 @@ class _ViewCampaignDetailEditChefState
                     const SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
+                    const Padding(
+                      padding: EdgeInsets.only(
                           left: 10.0, right: 10.0, bottom: 5.0, top: 5.0),
                       child: TextField(
                         style: TextStyle(
@@ -236,8 +235,8 @@ class _ViewCampaignDetailEditChefState
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
+                    const Padding(
+                      padding: EdgeInsets.only(
                           left: 10.0, right: 10.0, bottom: 5.0, top: 5.0),
                       child: TextField(
                         style: TextStyle(

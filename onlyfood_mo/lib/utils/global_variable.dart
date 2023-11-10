@@ -8,11 +8,11 @@ const webScreenSize = 600;
 
 List<Widget> homeScreenItems = [
   const NewfeedScreen(),
-  SearchScreen(),
+  const SearchScreen(),
   const Text(
     'Post',
     style: TextStyle(color: Colors.black),
   ),
-  NotificateScreen(),
+  const NotificateScreen(),
   const ViewProfileMain()
 ];

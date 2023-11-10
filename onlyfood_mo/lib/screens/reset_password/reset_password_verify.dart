@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
-import 'package:onlyfood_mo/widgets/text_field_input.dart';
 
 class ResetPassWordVerify extends StatefulWidget {
   const ResetPassWordVerify({Key? key}) : super(key: key);
@@ -48,7 +44,7 @@ class _ResetPassWordVerifyState extends State<ResetPassWordVerify> {
         ),
       ),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: double.infinity, // vô cùng
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -131,7 +127,7 @@ class _ResetPassWordVerifyState extends State<ResetPassWordVerify> {
                         },
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: const Color(0xFFEEEEEE),
+                          fillColor: Color(0xFFEEEEEE),
                           counterText: "",
                           border: OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
@@ -191,8 +187,8 @@ class _ResetPassWordVerifyState extends State<ResetPassWordVerify> {
                 ),
               ),
               Flexible(
-                child: Container(),
                 flex: 2,
+                child: Container(),
               ),
             ],
           ),

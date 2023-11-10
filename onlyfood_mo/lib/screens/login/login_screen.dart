@@ -64,28 +64,20 @@ class _LoginScreenState extends State<LoginScreen> {
             prefs.getString("jwt").toString());
 
         String role = user["Role"];
+        // Check if the widget is still mounted before navigating
         Navigator.pushReplacement(
-          // Push a new route and remove the current screen from the stack
           context,
           MaterialPageRoute(
-              builder: (context) =>
-                  const MobileScreenLayout()), // Navigate to HomeScreen after successful login
+            builder: (context) => const MobileScreenLayout(),
+          ),
         );
         return user;
       } else {
         throw Exception('Failed to log in');
       }
     } catch (e) {
-      // print("Error occurred: $e");
-      // Handle the error appropriately, for example, show an error message to the user
       throw Exception('Error occurred: $e');
     }
-    // finally {
-    //   setState(() {
-    //     _isLoading =
-    //         false; // Set loading state to false when the login process is completed
-    //   });
-    // }
   }
 
   @override

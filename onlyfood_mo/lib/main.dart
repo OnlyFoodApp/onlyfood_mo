@@ -1,34 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:onlyfood_mo/responsive/mobile_screen_layout.dart';
-import 'package:onlyfood_mo/responsive/responsive_layout_screen.dart';
-import 'package:onlyfood_mo/responsive/web_screen_layout.dart';
-import 'package:onlyfood_mo/screens/campaign/add_new_campaign.dart';
-import 'package:onlyfood_mo/screens/campaign/add_menu_for_campaign.dart';
-import 'package:onlyfood_mo/screens/cart/view_my_cart.dart';
-import 'package:onlyfood_mo/screens/comment/comment_screen.dart';
-import 'package:onlyfood_mo/screens/create_post/create_post_screen.dart';
 
 import 'package:onlyfood_mo/screens/login/login_screen.dart';
 
-import 'package:onlyfood_mo/screens/newfeeds/newfeed_screen.dart';
-import 'package:onlyfood_mo/screens/notificate/notificate_screen.dart';
 
-import 'package:onlyfood_mo/screens/post/view_post_detail.dart';
 
-import 'package:onlyfood_mo/screens/profile_editing/profile_editing.dart';
-import 'package:onlyfood_mo/screens/reset_password/reset_password.dart';
-import 'package:onlyfood_mo/screens/reset_password/reset_password_verify.dart';
-import 'package:onlyfood_mo/screens/reset_password/reset_pasword_second.dart';
-import 'package:onlyfood_mo/screens/search/search_screen.dart';
-import 'package:onlyfood_mo/screens/signup/signup_screen.dart';
-import 'package:onlyfood_mo/screens/signup/signup_screen_fourth.dart';
-import 'package:onlyfood_mo/screens/signup/signup_screen_second.dart';
-import 'package:onlyfood_mo/screens/signup/signup_screen_third.dart';
-import 'package:onlyfood_mo/screens/view_campaign_detail-chef/view_campaign_detail_chef.dart';
-import 'package:onlyfood_mo/screens/view_profile/view_profile_main.dart';
-import 'package:onlyfood_mo/screens/view_profile/profile.dart';
 import 'package:onlyfood_mo/utils/colors.dart';
 
 void main() async {
@@ -60,6 +37,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
-        home: LoginScreen());
+        home: const LoginScreen());
   }
 }

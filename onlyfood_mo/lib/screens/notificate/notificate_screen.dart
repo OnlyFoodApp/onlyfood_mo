@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class NotificateScreen extends StatefulWidget {
-  NotificateScreen({Key? key}) : super(key: key);
+  const NotificateScreen({Key? key}) : super(key: key);
 
   @override
   _NotificateScreenState createState() => _NotificateScreenState();
@@ -21,13 +21,13 @@ class _NotificateScreenState extends State<NotificateScreen> {
         body: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 10),
+              margin: const EdgeInsets.only(top: 10),
               child: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  Container(
+                  SizedBox(
                     width: 60,
                     height: 60,
                     child: CircleAvatar(
@@ -71,16 +71,16 @@ class _NotificateScreenState extends State<NotificateScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10),
+              margin: const EdgeInsets.only(top: 10),
               child: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  Container(
+                  const SizedBox(
                     width: 60,
                     height: 60,
-                    child: const Icon(
+                    child: Icon(
                       Icons.shopping_bag_outlined,
                       color: Colors.black,
                       size: 40,
@@ -118,16 +118,16 @@ class _NotificateScreenState extends State<NotificateScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10),
+              margin: const EdgeInsets.only(top: 10),
               child: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  Container(
+                  const SizedBox(
                     width: 60,
                     height: 60,
-                    child: const Icon(
+                    child: Icon(
                       Icons.check_circle_outline,
                       color: Colors.black,
                       size: 40,

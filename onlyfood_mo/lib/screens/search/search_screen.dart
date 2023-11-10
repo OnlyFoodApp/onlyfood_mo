@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class SearchScreen extends StatefulWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -14,13 +14,13 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black, size: 25),
+        iconTheme: const IconThemeData(color: Colors.black, size: 25),
         backgroundColor: Colors.white,
         title: Container(
           decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1),
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-          child: TextField(
+              borderRadius: const BorderRadius.all(Radius.circular(20))),
+          child: const TextField(
             decoration: InputDecoration(
                 hintText: "Search",
                 border: InputBorder.none,
@@ -33,10 +33,10 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         actions: <Widget>[
           Container(
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
               right: 20,
             ),
-            child: Icon(Icons.camera_alt),
+            child: const Icon(Icons.camera_alt),
           )
         ],
         toolbarHeight: kToolbarHeight + 10.0,
@@ -46,7 +46,7 @@ class _SearchScreenState extends State<SearchScreen> {
           SliverToBoxAdapter(
             child: Container(
               height: 30,
-              margin: EdgeInsets.only(top: 5, bottom: 5),
+              margin: const EdgeInsets.only(top: 5, bottom: 5),
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
@@ -89,17 +89,17 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget _tagItem(String title) {
     return Container(
       margin: const EdgeInsets.only(left: 10, right: 10),
-      child: Container(
-        margin: const EdgeInsets.all(5),
-        child: Text(
-          title,
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: Colors.grey),
         borderRadius: const BorderRadius.all(
           Radius.circular(5),
+        ),
+      ),
+      child: Container(
+        margin: const EdgeInsets.all(5),
+        child: Text(
+          title,
+          style: const TextStyle(color: Colors.black),
         ),
       ),
     );
