@@ -14,7 +14,6 @@ class Campaign {
   late String chefID;
   late int status;
 
-
   Campaign({
     required this.campaignName,
     required this.description,

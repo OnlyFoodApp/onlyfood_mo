@@ -19,6 +19,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
   String? chefID;
   DateTime? _selectedStartDate;
   DateTime? _selectedEndDate;
+  String? campaignId;
 
   TextEditingController campaignNameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -66,7 +67,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
 
   Future<void> getAccountId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? accountId = prefs.getString('accountId');
+    String? accountId = prefs.getString('chefID');
     setState(() {
       chefID = accountId;
     });
@@ -85,7 +86,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
           Uri.parse("https://onlyfoods.azurewebsites.net/api/v1/campaigns");
 
       // Tạo dữ liệu JSON từ các trường cần gửi
-      var data = {
+      var request = {
         'campaignName': campaignName,
         'description': description,
         'startDate': startDate.toIso8601String(),
@@ -95,7 +96,7 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
       };
 
       // Chuyển đổi Map thành chuỗi JSON
-      var jsonData = json.encode(data);
+      var jsonData = json.encode(request);
 
       // Tạo yêu cầu HTTP
       var response = await http.post(
@@ -105,11 +106,14 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
         },
         body: jsonData,
       );
-
-      print(data);
+      String data;
+      print(request);
       if (response.statusCode == 200) {
         // Parse phản hồi từ máy chủ
         var responseBody = await response.body;
+        Map<String, dynamic> jsonData = json.decode(responseBody);
+        String dataValue = jsonData['data'];
+        campaignId = dataValue;
         return Campaign.fromJson(json.decode(responseBody));
       } else {
         print(
@@ -139,34 +143,38 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
         descriptionController.text,
         _selectedStartDate!,
         _selectedEndDate!,
-        "5849ced6-f47f-4d3b-a46f-2a40c0d711fc",
+        chefID!,
         0,
       );
 
-      _showSuccessDialog();
+      _showSuccessDialog(campaignId!);
     } catch (e) {
       print('Error submitting campaign: $e');
       // You might want to show an error dialog here.
     }
   }
 
-  void _showSuccessDialog() {
+  void _showSuccessDialog(String campaignId) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return _buildSuccessDialog();
+        return _buildSuccessDialog(campaignId);
       },
     );
   }
 
-  Widget _buildSuccessDialog() {
+  Widget _buildSuccessDialog(String campaignId) {
     return AlertDialog(
       title: const Text('Campaign Successful'),
       content: const Text('Your campaign has been added successfully.'),
       actions: [
         ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             Navigator.of(context).pop(); // Close the dialog
+
+            // Call createMenu with the campaignId
+            await createMenu(campaignId);
+
             Navigator.of(context).pop(); // Navigate back to the previous screen
             widget.onCampaignSuccess?.call(); // Call the callback
           },
@@ -174,6 +182,42 @@ class _CreateCampaignScreenState extends State<CreateCampaignScreen> {
         ),
       ],
     );
+  }
+
+  Future<void> createMenu(String campaignId) async {
+    try {
+      var url = Uri.parse(
+          "https://onlyfoods.azurewebsites.net/api/v1/menus"); // Replace with your actual menu API URL
+
+      // Your menu creation logic here, you can use the campaignId obtained from the response
+
+      // Example: Creating a menu request
+      var menuRequest = {
+        'campaignId': campaignId,
+        'isDeleted': 0,
+        'isEdited': 0
+      };
+
+      // Convert menu request to JSON
+      var menuJsonData = json.encode(menuRequest);
+
+      // Send a POST request to create the menu
+      var menuResponse = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: menuJsonData,
+      );
+
+      if (menuResponse.statusCode == 200) {
+        print('Menu created successfully.');
+      } else {
+        print(
+            'Failed to create menu. Server returned status ${menuResponse.statusCode}');
+        print('Response body: ${await menuResponse.body}');
+      }
+    } catch (e) {
+      print('Error occurred while creating menu: $e');
+    }
   }
 
   @override
