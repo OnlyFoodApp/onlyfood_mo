@@ -35,6 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
       //get email and password from inputfieldtext
       String email = _emailController.text;
       String password = _passwordController.text;
+      print(email);
+      print(password);
+
       //map email and password to json file
       Map<String, dynamic> jsonData = {
         "email": email,
@@ -60,6 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
         Map<String, dynamic> user = JwtDecoder.decode(token);
         await prefs.setString('jwt', token); // SAVE JWT
         await prefs.setString('accountId', user["Id"]);
+        String chefId =
+            user["ChefId"] ?? ''; // Use an empty string if ChefID is null
+        await prefs.setString('chefID', chefId);
         await prefs.setString('role', user["Role"]);
         print("Token when we get inside pref: " +
             prefs.getString("jwt").toString());
